@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>myMvvm</title>
+    <script src="./myMvvm.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{ song }}</h1>
+      <input type="text" v-modal="song" />
+      <p>《{{ album.name }}》是{{ singer }}2005年11月发行的专辑</p>
+      <p>主打歌为{{ album.theme }}</p>
+      <p>作词人为{{ singer }}等人。{{sum}}</p>
+      为你弹奏肖邦的{{ album.theme }}
+    </div>
+    <script>
+      let myVue = new myMvvm({
+        el: "#app",
+        data: {
+          m: 11,
+          n: 22,
+          song: "发如雪",
+          album: {
+            name: "十一月的萧邦",
+            theme: "夜曲"
+          },
+          singer: "周杰伦"
+        },
+        computed: {
+          sum() {
+            console.log("this.m + this.n:", this.m + this.n);
+            return this.m + this.n;
+          },
+          noop() {}
+        },
+        mounted() {
+          console.log("所有事情都搞定了", this.m);
+        }
+      });
+    </script>
+  </body>
+</html>
